@@ -1,0 +1,36 @@
+
+{% extends 'todo/base2.html' %}
+{% block content %}
+{%load static%}
+<style>
+  .div1 {
+  margin-left: 80px;
+    margin-right: 80px;
+  text-decoration: none;
+color: #9933ff;
+ font-family: "Lucida Console", Courier, monospace;
+}
+  </style>
+<table>
+  <tr>
+    <td>
+        <img src="{% static 'todo/Dailytodocover.jpg' %}"  height="587" width="700"></img>
+      </td>
+      <td><div class="div1"><b><p><h3 >Daily Todo</h3><h6> is a task management app to help you stay organized and manage your day-to-day.
+      You can use Daily Todo to make shopping lists or task lists, take notes, record collections,
+        plan an event, or set reminders to increase your productivity and focus on what matters to you.
+        Daily Todo makes it easy to stay organized and manage your life.</h6>
+
+        </p>
+        </b>
+        <div>
+          <div align="center">
+            <form action="{% url 'signupuser' %}">
+              <button class="btn btn-primary" type="submit">Get Started</button>
+              </form>
+            </div>
+        </td>
+
+    <tr>
+  </table>
+{% endblock %}

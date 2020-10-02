@@ -1,0 +1,54 @@
+{% extends 'todo/base.html' %}
+
+{% block content %}
+<style>
+  table {
+  border: 2px solid black;
+  border-collapse: collapse;
+}
+tr {
+border: 1px solid brown;
+border-collapse: collapse;
+}
+  </style>
+<br>
+
+<h2 align="center">Current Todos</h2>
+<br>
+<h4 align="center">Looks like you current have {{todos.count}} todo{{todos|pluralize}}</h4>
+  <br>
+  <br>
+  <div align="center">
+    <table style="width:50%">
+      {% for todo in todos %}
+<tr {% if todo.important %} class="table-danger" {% else %} class="table-active" {%endif%} >
+
+
+<td>
+
+  <a href="{% url 'viewTodo' todo.id %}" style="margin-left: 10px">  {{ todo.title }}</a>
+  
+  {% if todo.memo %}-- {{todo.memo}}{% endif %}
+</td>
+<td><div align="right" style="margin-right: 10px" >
+  <form class="" action="{% url 'completeTodo' todo.id %}" method="POST">
+      {% csrf_token %}
+  <button class="btn btn-outline-primary" type="submit">Complete</button>
+  </form>
+  </div>
+  </td>
+</tr>
+{% endfor %}
+</table
+</div>
+<br>
+<br>
+<div align="center">
+  <form class="" action="{% url 'createTodo'%}" method="POST">
+      {% csrf_token %}
+  <button class="btn btn-primary" type="submit">New Todo</button>
+  </form>
+  </div>
+
+
+{% endblock %}
